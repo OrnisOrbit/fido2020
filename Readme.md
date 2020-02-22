@@ -1,8 +1,7 @@
-fido2020
-=========
+fidonet2020
+===========
 
-__Fido2020__ is a simple twitter clone web app to demonstrate the fundumentals of
-building backend Node.js applications.
+Project codenamed __fidonet2020__ is a simple Twitter clone.
 
 ## Requirements
 
@@ -18,16 +17,17 @@ Create an `.env` file with the following secrets and parameters.
 
 PORT=80                   # specify the server port
 SESSION_SECRET=           # specify the session secret to use with cookies
+ADMIN_PASS=               # specify the administrator's password.
 
 # Database Parameters
 
 DB_NAME=fidonet2020_db      # specify the database name
 DB_USER=fidonet2020_db_user # specify the name of a database user
-DB_PASS=                  # specify the password to access the database
-DB_HOST=localhost         # specify the database host
-DB_PORT=3306              # specify the database port
-DB_DIALECT=mysql          # select the database dialect (mysql, mariadb, sqlite, postgresql, mssql)
-DB_RECONNECT_TIMEOUT=2000 # time between db reconnection attempts
+DB_PASS=                    # specify the password to access the database
+DB_HOST=localhost           # specify the database host
+DB_PORT=3306                # specify the database port
+DB_DIALECT=mysql            # select the database dialect (mysql, mariadb, sqlite, postgresql, mssql)
+DB_RECONNECT_TIMEOUT=2000   # time between db reconnection attempts
 ```
 
 Download libraries with `npm install` and start the server with `npm start`.
@@ -40,4 +40,4 @@ Download libraries with `npm install` and start the server with `npm start`.
 
 ## Credits
 
-Michail Demidov <github.com/ornisorbit>
+Dmitrii Toksaitov <dmitrii@toksaitov.com>
