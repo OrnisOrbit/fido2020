@@ -39,5 +39,3 @@ Download libraries with `npm install` and start the server with `npm start`.
 3. Start the database container and the fidonet2020 container with `docker-compose up`.
 
 ## Credits
-
-Dmitrii Toksaitov <dmitrii@toksaitov.com>

@@ -1,7 +1,7 @@
 {
   "name": "fido2020",
-  "version": "0.0.1",
-  "description": "Fidonet is simle clone twitter",
+  "version": "1.0.0",
+  "description": "Buzzle is a better clone of Twitter.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,17 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OrnisOrbit/fido2020.git"
+    "url": "git+https://github.com/ornisorbit/fido2020.git"
   },
   "keywords": [
-    "Twitter"
+    "Buzzle",
+    "Twitter",
+    "clone"
   ],
-  "author": "Demidov Michail",
+  "author": "Demidov Michail <reyoku13@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/OrnisOrbit/fido2020/issues"
+    "url": "https://github.com/ornisorbit/fido2020/issues"
   },
-  "homepage": "https://github.com/OrnisOrbit/fido2020#readme",
+  "homepage": "https://github.com/ornisorbit/fido2020#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -27,7 +29,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "moment": "^2.24.0",
-    "mysql2": "^2.1.0",
-    "sequelize": "^5.21.4"
-  }
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.3"
+  },
+  "type": "module"
 }
