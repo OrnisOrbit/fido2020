@@ -52,5 +52,8 @@ npm start
 ```
 
 ## Credits
+<<<<<<< HEAD
 
 Buzzle was created by Dmitrii Toskaitov <dmitrii@toksaitov.com>
+=======
+>>>>>>> 0baa3e93e636e2149ec61479dfddd4b331c46f43
