@@ -1,59 +1,41 @@
-Buzzle
-======
+fidonet2020
+===========
 
-Buzzle is a better clone of Twitter.
+Project codenamed __fidonet2020__ is a simple Twitter clone.
 
-## Required Software
+## Requirements
 
-* Node.js with npm (version 12 or higher)
-* MySQL (version 8 or higher)
+* Node.js (>= 13) with npm or yarn
+* MySQL (>= 5.7)
 
-## Deployment
+## Deployment Manually
 
-To start the app, first create a `.env` with
-the following parameters:
-
-* `BUZZLE_DB_HOST` with a database host (defaults to 'localhost')
-* `BUZZLE_DB_PORT` with a database port (defaults to '3306')
-* `BUZZLE_DB_NAME` with a database name (defaults to 'buzzle\_db')
-* `BUZZLE_DB_USER` with a database user (defaults to 'buzzle\_db\_user')
-* `BUZZLE_DB_PASS` with a database password (required)
-* `BUZZLE_DB_DIALECT` with a database dialect (defaults to 'mysql')
-* `BUZZLE_SESSION_SECRET` with a session secret for cookies processing (required)
-* `BUZZLE_PASS_HASHING_ROUNDS` with hashing rounds (defaults to '8')
-* `BUZZLE_PORT` with the port of the web application (defaults to '8080')
-* `BUZZLE_ADMIN_USER` with the login name of the administrator (required)
-* `BUZZLE_ADMIN_PASS` with the password of the administrator's account (required)
-
-For example:
+Create an `.env` file with the following secrets and parameters.
 
 ```
-BUZZLE_DB_HOST=localhost
-BUZZLE_DB_PORT=3306
-BUZZLE_DB_NAME=buzzle_db
-BUZZLE_DB_USER=buzzle_db_user
-BUZZLE_DB_PASS=...
-BUZZLE_DB_DIALECT=mysql
+# Server Parameter
 
-BUZZLE_SESSION_SECRET=...
-BUZZLE_HASHING_ROUNDS=8
+PORT=80                   # specify the server port
+SESSION_SECRET=           # specify the session secret to use with cookies
+ADMIN_PASS=               # specify the administrator's password.
 
-BUZZLE_PORT=8080
+# Database Parameters
 
-BUZZLE_ADMIN_USER=chief
-BUZZLE_ADMIN_PASS=...
+DB_NAME=fidonet2020_db      # specify the database name
+DB_USER=fidonet2020_db_user # specify the name of a database user
+DB_PASS=                    # specify the password to access the database
+DB_HOST=localhost           # specify the database host
+DB_PORT=3306                # specify the database port
+DB_DIALECT=mysql            # select the database dialect (mysql, mariadb, sqlite, postgresql, mssql)
+DB_RECONNECT_TIMEOUT=2000   # time between db reconnection attempts
 ```
 
-After that, install npm dependencies and start the server.
+Download libraries with `npm install` and start the server with `npm start`.
 
-```
-npm install
-npm start
-```
+## Deployment through Docker
+
+1. Install Docker and Docker Compose.
+2. Create an `.env` file as described in 'Manual Deployment'.
+3. Start the database container and the fidonet2020 container with `docker-compose up`.
 
 ## Credits
-<<<<<<< HEAD
-
-Buzzle was created by Dmitrii Toskaitov <dmitrii@toksaitov.com>
-=======
->>>>>>> 0baa3e93e636e2149ec61479dfddd4b331c46f43
