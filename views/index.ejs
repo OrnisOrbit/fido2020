@@ -1,68 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8">
     <title>Project Fido2020</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
 </head>
+
 <body>
     <header>
-        <h1>FidoNet2020</h1>
-        <ul class="user-toolbar">
-            <% if (session.authorized) { %>
+        <nav class="nav navbar-light bg-light">
+            <a class="navbar-brend" href="/">
+                <h1>FidoNet2020</h1>
+            </a>
+
+            <ul class="user-toolbar">
+                <% if (session.authorized) { %>
                 <li>@<%= session.login %></li>
                 <li>
                     <form action="/logout" method="POST">
                         <input type="submit" value="Logout">
                     </form>
                 </li>
-            <% } else { %>
+                <% } else { %>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">Register</a></li>
-            <% } %>
-        </ul>
+                <% } %>
+            </ul>
+        </nav>
     </header>
     <main>
         <% if (session.error) { %>
-            <section class="error">
-                <%= session.error %>
-                <% delete session.error; %>
-            </section>
+        <section class="error">
+            <%= session.error %>
+            <% delete session.error; %>
+        </section>
         <% } %>
         <% if (session.authorized) { %>
-            <form action="/message/create" method="POST">
-                <label>
-                    What’s on your mind?<br>
-                    <input type="text" name="content">
-                </label>
-                <input type="submit" value="Send">
-            </form>
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-4">
+                <form action="/message/create" method="POST">
+                    <label> What’s on your mind?<br></label>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="content">
+                        <div class="input-group-apeend">
+                            <input class="btn btn-outline-secondary" type="submit" value="Send">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <% } %>
-        <ul class="messages">
-            <% if (messages.length === 0) { %>
-                <li class="message">No messages...</li>
-            <% } else { %>
-                <% for (const message of messages) { %>
-                    <li class="message">
-                        <p>@<%= message.user.login %></p>
-                        <p><%= message.content %></p>
-                        <time><%= moment(message.createdAt).format('LLL') %></time>
-                        <% if (session.administrator || session.userID === message.user.id) { %>
+        <div class="messages">
+
+            <div class="container">
+                <% if (messages.length === 0) { %>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-4:w">
+
+                        <div class="alert alert-primary">No messages...</div>
+                    </div>
+                </div>
+                <% } else { %>
+                <div class="row">
+                    <% for (const message of messages) { %>
+                    <div class="col-sm-4">
+                        <div class="card p-3 m-2">
+                            <p class="card-title">@<%= message.user.login %></p>
+                            <p class="card-text"><%= message.content %></p>
+                            <time class="card-subtitle"><%= moment(message.createdAt).format('LLL') %></time>
+                            <% if (session.administrator || session.userID === message.user.id) { %>
                             <!-- <a href="/message/<%= message.id %>/edit">Edit</a> -->
-                            <form action="/message/<%= message.id %>/edit" method="GET">
-                                <input type="submit" value="Edit">
-                            </form>
-                            <form action="/message/<%= message.id %>/delete" method="POST">
-                                <input type="submit" value="Delete">
-                            </form>
-                        <% } %>
-                    </li>
+                            <div class="btn-group">
+                                <form action="/message/<%= message.id %>/edit" method="GET">
+                                    <input class="btn btn-secondary btn-sm " type="submit" value="Edit">
+                                </form>
+                                <form action="/message/<%= message.id %>/delete" method="POST">
+                                    <input class="btn btn-secondary btn-sm " type="submit" value="Delete">
+                                </form>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
                 <% } %>
-            <% } %>
-        </ul>
+            </div>
     </main>
     <footer>
         &copy; 2020
     </footer>
 </body>
+
 </html>

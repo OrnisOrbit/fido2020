@@ -5,3 +5,13 @@
 footer {
     margin-top: 2em;
 }
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
